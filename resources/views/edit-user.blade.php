@@ -23,34 +23,34 @@
 							@endif
 							<form method="POST" action="{{route('user.update')}}">
 								@csrf
-								<input type="hidden" name="id" value="{{$userinfo->id}}">
+								<input type="hidden" name="id" value="{{$user->id}}">
 							    <div class="form-group">
 							    	<label for="full_name">Full name</label>
-							    	<input type="text" name="full_name" class="form-control" placeholder="Enter Full name" value="{{$userinfo->full_name}}">
+							    	<input type="text" name="name" class="form-control" placeholder="Enter Full name" value="{{$user->name}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="father_name">Father name</label>
-							    	<input type="text" name="father_name" class="form-control" placeholder="Enter Father name" value="{{$userinfo->father_name}}">
+							    	<input type="text" name="father_name" class="form-control" placeholder="Enter Father name" value="{{$user->father_name}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="cnic">Cnic no</label>
-							    	<input type="number" name="cnic" class="form-control" placeholder="Enter cnic" value="{{$userinfo->cnic}}">
+							    	<input type="number" name="cnic" class="form-control" placeholder="Enter cnic" value="{{$user->cnic}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="email">Email</label>
-							    	<input type="text" name="email" class="form-control" placeholder="Enter email" value="{{$userinfo->email}}">
+							    	<input type="text" name="email" class="form-control" placeholder="Enter email" value="{{$user->email}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="contact">Contact no</label>
-							    	<input type="number" name="contact" class="form-control" placeholder="Enter contact no" value="{{$userinfo->contact_no}}">
+							    	<input type="number" name="contact" class="form-control" placeholder="Enter contact no" value="{{$user->contact_no}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="address">Permanent Address</label>
-							    	<input type="text" name="address" class="form-control" placeholder="Enter address" value="{{$userinfo->address}}">
+							    	<input type="text" name="address" class="form-control" placeholder="Enter address" value="{{$user->address}}">
                                 </div>
                                 <div class="form-group">
 							    	<label for="password">Password</label>
-							    	<input type="password" name="password" class="form-control" placeholder="Enter password" value="{{$userinfo->password}}">
+							    	<input type="password" name="password" class="form-control" placeholder="Enter password" value="{{$user->password}}">
                                 </div>
                                 <button type="submit" class="btn btn-success">Update User</button>
 

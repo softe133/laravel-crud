@@ -16,13 +16,13 @@
 							User Details
 						</div>
 						<div class="card-body">
-							<h1>{{$userinfo->full_name}}</h1>
-							<span>father name: {{$userinfo->father_name}}</span><br>
-							<span>cnic: {{$userinfo->cnic}}</span><br>
-							<span>email: {{$userinfo->email}}</span><br>
-							<span>contact: {{$userinfo->contact_no}}</span><br>
-							<span>address: {{$userinfo->address}}</span><br>
-							<span>password: {{$userinfo->password}}</span>
+							<h1>{{$user->name}}</h1>
+							<span>father name: {{$user->father_name}}</span><br>
+							<span>cnic: {{$user->cnic}}</span><br>
+							<span>email: {{$user->email}}</span><br>
+							<span>contact: {{$user->contact_no}}</span><br>
+							<span>address: {{$user->address}}</span><br>
+							<span>password: {{$user->password}}</span>
 						</div>
 					</div>
 

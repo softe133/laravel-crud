@@ -25,7 +25,7 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>FULL NAME</th>
+										<th>NAME</th>
 										<th>FATHER NAME</th>
 										<th>CNIC</th>
 										<th>EMAIL</th>
@@ -35,10 +35,10 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($userinfos as $userinfo)
+									@foreach($user as $userinfo)
 										<tr>
 											<td>{{$userinfo->id}}</td>
-											<td>{{$userinfo->full_name}}</td>
+											<td>{{$userinfo->name}}</td>
 											<td>{{$userinfo->father_name}}</td>
 											<td>{{$userinfo->cnic}}</td>
 											<td>{{$userinfo->email}}</td>

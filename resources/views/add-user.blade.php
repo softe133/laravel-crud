@@ -24,8 +24,8 @@
 							<form method="POST" action="{{route('user.create')}}">
 								@csrf
 							    <div class="form-group">
-							    	<label for="full_name">Full name</label>
-							    	<input type="text" name="full_name" class="form-control" placeholder="Enter Full name">
+							    	<label for="name">Full name</label>
+							    	<input type="text" name="name" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="form-group">
 							    	<label for="father_name">Father name</label>
