@@ -22,7 +22,8 @@
 							<span>email: {{$user->email}}</span><br>
 							<span>contact: {{$user->contact_no}}</span><br>
 							<span>address: {{$user->address}}</span><br>
-							<span>password: {{$user->password}}</span>
+							<span>password: {{$user->password}}</span><br>
+							<span>Roles: {{$user->roles}}</span>
 						</div>
 					</div>
 

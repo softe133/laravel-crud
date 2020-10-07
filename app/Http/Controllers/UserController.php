@@ -7,63 +7,68 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function addUser()
+    public function addUsers()
     {
     	return view('add-user');
     }
 
-    public function createUser(Request $request)
+    public function createUsers(Request $request)
     {
-    	$user = new User();
-    	$user->name = $request->name;
-    	$user->father_name = $request->father_name;
-    	$user->cnic = $request->cnic;
-    	$user->email = $request->email;
-    	$user->contact_no = $request->contact;
-    	$user->address = $request->address;
-    	$user->password = $request->password;
+    	$user = new User($request->all());
+        // $user->roles = $request->input('roles');
+        // User::create($user);
+    	// $user->name = $request->name;
+    	// $user->father_name = $request->father_name;
+    	// $user->cnic = $request->cnic;
+    	// $user->email = $request->email;
+    	// $user->contact_no = $request->contact;
+    	// $user->address = $request->address;
+    	// $user->password = $request->password;
     	$user->save();
-    	return back()->with('user_created','User has been added Successfully!');
+        return response()->json($user);
+    	//return back()->with('user_created','User has been added Successfully!');
 
     }
 
-    public function getUser()
+    public function getUsers()
     {
     	$user = User::orderBy('id','DESC')->get();
-    	return view('alluser',compact('user'));
+    	return view('users',compact('user'));
     }
 
-    public function getUserById($id)
+    public function getUsersById($id)
     {
     	$user = User::where('id',$id)->first();
     	return view('single-user',compact('user'));
     }
 
-    public function deleteUser($id)
+    public function deleteUsers($id)
     {
-    	User::where('id',$id)->delete();
+    	$user = User::where('id',$id)->delete();
     	return back()->with('user-deleted','user has been deleted successfully!');
 
     }
 
-    public function editUser($id)
+    public function editUsers($id)
     {
     	$user = User::find($id);
     	return view('edit-user',compact('user'));
     }
 
-    public function updateUser(request $request)
+    public function updateUsers(request $request)
     {
     	$user = User::find($request->id);
-    	$user->name = $request->name;
-    	$user->father_name = $request->father_name;
-    	$user->cnic = $request->cnic;
-    	$user->email = $request->email;
-    	$user->contact_no = $request->contact;
-    	$user->address = $request->address;
-    	$user->password = $request->password;
+        $user->update($request->all());
+    	// $user->name = $request->name;
+    	// $user->father_name = $request->father_name;
+    	// $user->cnic = $request->cnic;
+    	// $user->email = $request->email;
+    	// $user->contact_no = $request->contact;
+    	// $user->address = $request->address;
+    	// $user->password = $request->password;
     	$user->save();
-    	return back()->with('user-updated','user has been updated successfully!');
+        return response()->json($user);
+    	// return back()->with('user-updated','user has been updated successfully!');
 
     }
 }

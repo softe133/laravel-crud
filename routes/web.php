@@ -23,16 +23,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/add-user',[UserController::class,'addUser']);
+Route::get('/add-user',[UserController::class,'addUsers']);
 
-Route::post('/create-user',[UserController::class,'createUser'])->name('user.create');
+Route::post('/create-user',[UserController::class,'createUsers'])->name('user.create');
 
-Route::get('/alluser',[UserController::class,'getUser']);
+Route::get('/users',[UserController::class,'getUsers']);
 
-Route::get('/users/{id}',[UserController::class,'getUserById']);
+Route::get('/single-users/{id}',[UserController::class,'getUsersById']);
 
-Route::get('/delete-user/{id}',[UserController::class,'deleteUser']);
+Route::get('/delete-user/{id}',[UserController::class,'deleteUsers']);
 
-Route::get('/edit-user/{id}',[UserController::class,'editUser']);
+Route::get('/edit-user/{id}',[UserController::class,'editUsers']);
 
-Route::post('/update-user',[UserController::class,'updateUser'])->name('user.update');
+Route::post('/update-user',[UserController::class,'updateUsers'])->name('user.update');
