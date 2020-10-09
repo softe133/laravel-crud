@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function addUsers()
     {
-    	return view('add-user');
+    	return view('add-edit-user');
     }
 
     public function createUsers(Request $request)
@@ -32,6 +32,7 @@ class UserController extends Controller
 
     public function getUsers()
     {
+        // return $user ? $user->firstname : '';
     	$user = User::orderBy('id','DESC')->get();
     	return view('users',compact('user'));
     }
@@ -52,7 +53,7 @@ class UserController extends Controller
     public function editUsers($id)
     {
     	$user = User::find($id);
-    	return view('edit-user',compact('user'));
+    	return view('add-edit-user',compact('user'));
     }
 
     public function updateUsers(request $request)
