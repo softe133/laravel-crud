@@ -32,10 +32,10 @@
 									<tr>
 										<th>ID</th>
 										<th>NAME</th>
-										<th>FATHER NAME</th>
+										<th>F-NAME</th>
 										<th>CNIC</th>
 										<th>EMAIL</th>
-										<th>CONTACT NO</th>
+										<th>CONTACT</th>
 										<th>ADDRESS</th>
 										<th>ROLES</th>
 										<th>ACTION</th>
@@ -51,13 +51,13 @@
 											<td>{{$userinfo->email}}</td>
 											<td>{{$userinfo->contact_no}}</td>
 											<td>{{$userinfo->address}}</td>
-											<td>{{$userinfo->roles}}</td>
+											<td>{{$userinfo->title}}</td>
 											<td>
-												<a href="/laravel8_demo/public/single-users/{{$userinfo->id}}"><i class="fa fa-info" aria-hidden="true"></i></a>&nbsp;&nbsp;
+												<a href="/laravel8_demo/public/single-users/{{$userinfo->id}}"><i class="fa fa-info" aria-hidden="true" title="details"></i></a>&nbsp;&nbsp;
 
-												<a href="/laravel8_demo/public/edit-user/{{$userinfo->id}}" ><i class="fa fa-edit"></i></a>&nbsp;
+												<a href="/laravel8_demo/public/edit-user/{{$userinfo->id}}" ><i class="fa fa-edit" title="edit"></i></a>&nbsp;
 
-												<a href="/laravel8_demo/public/delete-user/{{$userinfo->id}}"><i class="fa fa-trash"></i></a>
+												<a href="/laravel8_demo/public/delete-user/{{$userinfo->id}}"><i class="fa fa-trash" title="delete"></i></a>
 
 											</td>
 										</tr>

@@ -3,9 +3,13 @@
 <head>
 	<title>Edit Users</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+   
 
 
 </head>
@@ -31,6 +35,11 @@
 							    <div class="form-group">
 							    	<label for="full_name">Full name</label>
 							    	<input type="text" name="name" class="form-control" placeholder="Enter Full name" value="{{$user->name ?? ''}}" id="name">
+							    	 <!-- @error('name')
+				                          <span class="invalid-feedback" role="alert">
+				                              <strong>{{ $message }}</strong>
+				                          </span>
+				                      @enderror -->
                                 </div>
                                 <div class="form-group">
 							    	<label for="father_name">Father name</label>
@@ -57,27 +66,30 @@
 							    	<input type="password" name="password" class="form-control" placeholder="Enter password" value="{{$user->password ?? ''}}" id="password">
                                 </div>
                                 <div class="form-group">
-                                @if (strpos($user->roles ?? '', 'Administrator') !== false)
-                                <?php $check = 'checked' ; ?>
-                                @else
-                                <?php $check = '' ; ?>
-                                @endif
-                                <label for="roles">Select Roles :</label><br>
-                                <label><input type="checkbox" name="roles" value="Administrator" class="get_value" <?php echo $check ?> > Administrator</label>
-                                <br>
-                                @if (strpos($user->roles ?? '', 'Editor') !== false)
-                                <?php $check = 'checked' ; ?>
-                                @else
-                                <?php $check = '' ; ?>
-                                @endif
-                                <label><input type="checkbox" name="roles" value="Editor" class="get_value" <?php echo $check ?> > Editor</label>
-                                <br>
-                                @if (strpos($user->roles ?? '', 'Subscriber') !== false)
-                                <?php $check = 'checked' ; ?>
-                                @else
-                                <?php $check = '' ; ?>
-                                @endif
-                                <label><input type="checkbox" name="roles" value="Subscriber" class="get_value" <?php echo $check ?> > Subscriber </label>
+                                	<label for="roles">Select Your Roles</label>
+                                	<select class="selectpicker" multiple data-live-search="true" id="roles" name=roles[]>
+                                		@if (strpos($user->title ?? '', 'Administrator') !== false)
+			                                <?php $select = 'selected' ; ?>
+			                                @else
+			                                <?php $select = '' ; ?>
+		                                @endif
+										  <option value="Administrator" class="get_value" <?php echo $select ?>>Administrator</option>
+
+										@if (strpos($user->title ?? '', 'Editor') !== false)
+			                                <?php $select = 'selected' ; ?>
+			                                @else
+			                                <?php $select = '' ; ?>
+		                                @endif
+										  <option value="Editor" class="get_value" <?php echo $select ?>>Editor</option>
+
+										@if (strpos($user->title ?? '', 'Subscriber') !== false)
+			                                <?php $select = 'selected' ; ?>
+			                                @else
+			                                <?php $select = '' ; ?>
+		                                @endif
+										  <option value="Subscriber" class="get_value" <?php echo $select ?>>Subscriber</option>
+									</select>
+                                
                                 </div>  
                                 <button type="submit" class="btn btn-success" id="formbtn"></button>
 
@@ -92,7 +104,7 @@
 	</section>
 
 	<script>
-
+       
 		if($("#userid").val() > 0)
 		{
 			$('#formbtn').text('Update User');
@@ -102,7 +114,7 @@
 		{
 			$('#formbtn').text('Add User');
 		}
-
+        
 		$('#userForm').submit(function(e){
 			e.preventDefault();
 			if($("#userid").val() > 0 ?? '')
@@ -119,7 +131,7 @@
 				var roles = [];
 
 				$('.get_value').each(function(){  
-	                 if($(this).is(":checked"))  
+	                 if($(this).is(":selected"))  
 	                 {  
 	                      roles.push($(this).val());  
 	                 }  
@@ -167,7 +179,7 @@
 	            var roles = [];  
 	        
 	            $('.get_value').each(function(){  
-	                 if($(this).is(":checked"))  
+	                 if($(this).is(":selected"))  
 	                 {  
 	                      roles.push($(this).val());  
 	                 }  
